@@ -8,8 +8,6 @@ spec:
   containers:
   - name: nginx
     image: nginx
-
-# I want to run 2nd pod where the pod-1 is running.
 ---
 apiVersion: v1
 kind: Pod
@@ -19,7 +17,7 @@ metadata:
     tier: backend
 spec:
   affinity:
-    podAffinity: 
+    podAntiAffinity:
       # Hard Rule
       requiredDuringSchedulingIgnoredDuringExecution:
       - labelSelector:
