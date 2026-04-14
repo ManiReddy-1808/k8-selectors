@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-affinity
+  labels:
+    env: test
+spec:
+  affinity:
+    nodeAffinity: 
+    # Hard Rule for Node
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: topology.kubernetes.io/zone
+            operator: In
+            values:
+            - us-east-1d
+              us-east-1c
+    # Soft Rule for node
+      prefferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        preference:
+          matchExpressions:
+          - key: project
+            operator: In
+            values:
+            - roboshop
+      - weight: 10 # Above rule has more preference than this rule, if above node resources are not available then this rule will be considered
+        preference:
+          matchExpressions:
+          - key: project
+            operator: In
+            values:
+            - amazon
+  containers:
+  - name: nginx
+    image: nginx:latest
+  # nodeSelector: # Asking for VIP Room
+  #   project: roboshop
+  # tolerations:
+  # - key: "project"
+  #   operator: "Equal"
+  #   value: "roboshop"
+  #   effect: "NoExecute"
+  
