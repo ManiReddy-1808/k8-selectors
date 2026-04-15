@@ -12,11 +12,11 @@ spec:
         nodeSelectorTerms:
         - matchExpressions:
           - key: topology.kubernetes.io/zone
-            operator: NotIn # This is Anti Affinity rule, it will not schedule the pod in mentioned zone
+            operator: In 
             values:
             - us-east-1c
           - key: project
-            operator: NotIn
+            operator: NotIn # --> For Anti Affinity & In --> For affinity
             values:
             - amazon
   containers:
