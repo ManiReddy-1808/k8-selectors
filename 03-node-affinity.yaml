@@ -15,7 +15,7 @@ spec:
             operator: In
             values:
             - us-east-1b
-              us-east-1c  # 3 Nodes are available.
+            -  us-east-1c  # 3 Nodes are available.
     # Soft Rule for node
       preferredDuringSchedulingIgnoredDuringExecution:
       - weight: 100
