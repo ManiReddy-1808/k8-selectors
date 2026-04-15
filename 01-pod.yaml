@@ -7,5 +7,5 @@ spec:
   - name: nginx
     image: nginx:latest
   nodeSelector:
-    project: roboshop
+    project: roboshop # Key: value pair (Which given on node)
   
