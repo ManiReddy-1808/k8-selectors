@@ -14,8 +14,8 @@ spec:
           - key: topology.kubernetes.io/zone
             operator: In
             values:
-            - us-east-1d
-              us-east-1c
+            - us-east-1b
+              us-east-1c  # 3 Nodes are available.
     # Soft Rule for node
       prefferredDuringSchedulingIgnoredDuringExecution:
       - weight: 100
@@ -25,7 +25,7 @@ spec:
             operator: In
             values:
             - roboshop
-      - weight: 10 # Above rule has more preference than this rule, if above node resources are not available then this rule will be considered
+      - weight: 10 # Above rule has more preference than this rule, if above node resources are not available then this rule will be considered and schedule in another node
         preference:
           matchExpressions:
           - key: project
