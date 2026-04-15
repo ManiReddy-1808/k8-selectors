@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: store
-  replicas: 3 # 5
+  replicas: 3 # 5 --> Pending bcz due to Anti Affinity rule.
   template:
     metadata:
       labels:
